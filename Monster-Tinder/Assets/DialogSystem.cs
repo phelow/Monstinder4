@@ -58,7 +58,7 @@ public class DialogSystem : MonoBehaviour
         {
             foreach (Check modifier in m_lines[line].m_modifiers)
             {
-                PlayerPrefs.SetInt(modifier.m_valueName, modifier.m_valueMin);
+                PlayerPrefs.SetInt(modifier.m_valueName, PlayerPrefs.GetInt(modifier.m_valueName,0) + modifier.m_valueMin);
             }
         }
 
@@ -148,6 +148,9 @@ public class DialogSystem : MonoBehaviour
     private TextAsset m_levelText;
 
     [SerializeField]
+    private UnityEngine.UI.Image m_buttonImageB;
+
+    [SerializeField]
     private AudioSource m_source;
 
     [SerializeField]
@@ -188,7 +191,7 @@ public class DialogSystem : MonoBehaviour
             {
                 {
                     checks = new List<Check>();
-                    lines.Add(new DialogPair(checks, "Click the end button to skip this dialog."));
+                    lines.Add(new DialogPair(checks, "Click the \"Start Game\" button to skip this dialog."));
                 }
             }
             List<DialogPair> responses = new List<DialogPair>();
@@ -200,7 +203,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "end"));
+                responses.Add(new DialogPair(checks, "Start game"));
             }
 
 
@@ -323,7 +326,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "tutorial")); //written
+                responses.Add(new DialogPair(checks, "")); //written
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -388,7 +391,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "Seems a bit superficial to me"));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -460,7 +463,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "tutorial"));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -515,7 +518,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "Just take me to the game."));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -625,7 +628,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "tutorial two"));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -656,7 +659,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "tutorial two"));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -733,7 +736,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "tutorial"));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -801,7 +804,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "tutorial two"));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -832,7 +835,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "tutorial two"));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -862,7 +865,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "tutorial two"));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -905,7 +908,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "Okay Whatever"));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -941,7 +944,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "tutorial three"));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -971,7 +974,7 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "well how"));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -1001,12 +1004,12 @@ public class DialogSystem : MonoBehaviour
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "end")); //written
+                responses.Add(new DialogPair(checks, "Start game")); //written
             }
 
             {
                 checks = new List<Check>();
-                responses.Add(new DialogPair(checks, "end"));
+                responses.Add(new DialogPair(checks, ""));
             }
 
             beforeCharacterCustomizationDictionary.Add(key, new DialogLine(modifiers, lines, responses));
@@ -1022,7 +1025,7 @@ public class DialogSystem : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         m_playerChoice = "start";
-        while (m_playerChoice != "end")
+        while (m_playerChoice != "Start game")
         {
             List<string> text = null;
             try {
@@ -1039,12 +1042,21 @@ public class DialogSystem : MonoBehaviour
             m_dialogText.text = text[0];
             m_choiceA.text = text[1];
             m_choiceB.text = text[2];
+
+            if(m_choiceB.text == "")
+            {
+                m_buttonImageB.color = Color.clear;
+            }
+            else
+            {
+                m_buttonImageB.color = Color.white;
+
+            }
+
             Fader.Instance.FadeOut(m_dialogText.gameObject, .1f);
             Fader.Instance.FadeOut(m_choiceA.gameObject, .1f);
             Fader.Instance.FadeOut(m_choiceB.gameObject, .1f);
-
-
-
+            
             m_playerChoice = "";
             while (m_playerChoice.Length == 0)
             {
@@ -1078,29 +1090,29 @@ public class DialogSystem : MonoBehaviour
         {
             case "DialogBeforeCharacterCustomization":
                 yield return RunScene(m_dialogExchanges[currentLevel].m_beforeCharacterCustomization);
-                while (m_playerChoice != "end") { yield return new WaitForEndOfFrame(); }
+                while (m_playerChoice != "Start game") { yield return new WaitForEndOfFrame(); }
 
 
                 Fader.Instance.FadeIn().LoadLevel("CharacterCustomization").FadeOut();
                 break;
             case "DialogBeforeMainLevel":
                 yield return RunScene(m_dialogExchanges[currentLevel].m_beforeMainLevel);
-                while (m_playerChoice != "end") { yield return new WaitForEndOfFrame(); }
+                while (m_playerChoice != "Start game") { yield return new WaitForEndOfFrame(); }
                 Fader.Instance.FadeIn().LoadLevel("PrototypeScene").FadeOut();
                 break;
             case "DialogBeforeMainTournament":
                 yield return RunScene(m_dialogExchanges[currentLevel].m_beforeMainTournament);
-                while (m_playerChoice != "end") { yield return new WaitForEndOfFrame(); }
+                while (m_playerChoice != "Start game") { yield return new WaitForEndOfFrame(); }
                 Fader.Instance.FadeIn().LoadLevel("MatchRejects").FadeOut();
                 break;
             case "DialogBeforeFailure":
                 yield return RunScene(m_dialogExchanges[currentLevel].m_beforeFailure);
-                while (m_playerChoice != "end") { yield return new WaitForEndOfFrame(); }
+                while (m_playerChoice != "Start game") { yield return new WaitForEndOfFrame(); }
                 Fader.Instance.FadeIn().LoadLevel("Failure").FadeOut();
                 break;
             case "DialogBeforeSuccess":
                 yield return RunScene(m_dialogExchanges[currentLevel].m_beforeSuccess);
-                while (m_playerChoice != "end") { yield return new WaitForEndOfFrame(); }
+                while (m_playerChoice != "Start game") { yield return new WaitForEndOfFrame(); }
                 Fader.Instance.FadeIn().LoadLevel("Success").FadeOut();
                 break;
         }
