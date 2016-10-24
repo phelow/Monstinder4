@@ -731,7 +731,7 @@ MonoBehaviour:
   m_levelText: {fileID: 0}
   m_buttonImageB: {fileID: 796705617}
   m_source: {fileID: 506987096}
-  m_clip: {fileID: 8300000, guid: 5bc4ee44ba4f24243a9291779a1de17b, type: 3}
+  m_clip: {fileID: 8300000, guid: 8cce23a2c61014cb78213530bd3d2f3f, type: 3}
 --- !u!1 &631269709
 GameObject:
   m_ObjectHideFlags: 0

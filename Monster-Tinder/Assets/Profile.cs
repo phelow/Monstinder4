@@ -266,9 +266,15 @@ public class Profile : MonoBehaviour {
 
     public void ClearHighlighting()
     {
-        foreach(SpriteRenderer sr in m_toHighlight.Keys)
+        try {
+            foreach (SpriteRenderer sr in m_toHighlight.Keys)
+            {
+                sr.color = Color.white;
+            }
+        }
+        catch
         {
-            sr.color = Color.white;
+
         }
 
         this.m_toHighlight = new Dictionary<SpriteRenderer, Color>();

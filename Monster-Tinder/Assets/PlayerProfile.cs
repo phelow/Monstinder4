@@ -12,6 +12,10 @@ public class PlayerProfile : Profile {
 	[SerializeField]private GameObject m_spawnScoreTextHere;
 	[SerializeField]private GameObject m_plusPoint;
 	[SerializeField]private GameObject m_minusPoint;
+    [SerializeField]
+    private AudioSource m_audioSource;
+    [SerializeField]
+    private AudioClip m_audioClip;
 
 	[SerializeField]private BodyPartDisplay [] m_bodyPartDisplays;
 
@@ -340,8 +344,9 @@ public class PlayerProfile : Profile {
 
 			m_choice.transform.localScale *= .25f;
 
-			//TODO:Add the choice to the body
-			m_choice = slot.AddPart(m_choice,slot.m_parentPart);
+            //TODO:Add the choice to the body
+            m_audioSource.PlayOneShot(m_audioClip);
+            m_choice = slot.AddPart(m_choice,slot.m_parentPart);
 
             elements.Add(m_choice.GetElementType());
 
