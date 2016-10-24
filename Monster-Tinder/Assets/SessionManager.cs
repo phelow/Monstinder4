@@ -25,7 +25,7 @@ public class SessionManager : MonoBehaviour {
 	void Start () {
         //calculate time
         int curDifficulty = PlayerPrefs.GetInt ("Level",0);
-		time = (int) ((curDifficulty) * (Mathf.Max(mc_timePerLevel - curDifficulty,0)) + mc_startingTime);
+		time = (int) ((curDifficulty) * 10 + mc_startingTime);
 
 		//Kick off timer coroutine
 		StartCoroutine(TimeLevel());
@@ -250,14 +250,16 @@ public class SessionManager : MonoBehaviour {
 		PlayerPrefs.SetInt ("LastCorrectChoices",PlayerProfile.GetCorrectChoices());
 		PlayerPrefs.SetInt ("LastIncorrectChoices",PlayerProfile.GetIncorrectChoices());
         
-        if (maxLevelUnlocked < curDifficulty + 1)
-        {
-            PlayerPrefs.SetInt("MaxLevel", curDifficulty + 1);
-        }
         //if unlocked return to main menu
         if ( PlayerProfile.GetScore ()  >= ms_matchesNeeded) {
+            if (maxLevelUnlocked < curDifficulty + 1)
+            {
+                PlayerPrefs.SetInt("MaxLevel", curDifficulty + 1);
+            }
+
             if (PlayerPrefs.GetInt("Level", 0) > 1)
             {
+                
                 Fader.Instance.FadeIn().LoadLevel("MatchRejects").FadeOut();
             }
             else
