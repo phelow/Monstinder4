@@ -420,6 +420,19 @@ public class PlayerProfile : Profile {
         scoreText.color = Color.blue;
     }
 
+    public static void SetMatchesNeeded()
+    {
+        int score = ms_score - SessionManager.ms_matchesNeeded;
+
+        Text scoreText = GameObject.Find("CurrentScoreText").GetComponent<Text>() as Text;
+        scoreText.text = "Matches Left: " + -1 * (ms_score - SessionManager.ms_matchesNeeded);
+
+        if(score > 0)
+        {
+            scoreText.text = "Score: " + score;
+        }
+
+    }
 
 	public static void AddMatch(){
 
@@ -431,10 +444,9 @@ public class PlayerProfile : Profile {
 		rb.AddTorque (Random.Range (-10.0f, 10.0f));
         rb.gravityScale = 1.0f;
 
-		Text scoreText = GameObject.Find ("CurrentScoreText").GetComponent<Text>() as Text;
 		ms_score++;
 		ms_correctChoices++;
-		scoreText.text = "Score: "+ ms_score;
+        SetMatchesNeeded();
         ms_instance.StartCoroutine(ms_instance.LerpHighScoreText(Color.green));
 
     }
@@ -449,7 +461,7 @@ public class PlayerProfile : Profile {
 
 		ms_score--;
 		ms_incorrectChoices++;
-		scoreText.text = "Score: "+ ms_score;
+        SetMatchesNeeded();
         ms_instance.StartCoroutine(ms_instance.LerpHighScoreText(Color.red));
     }
 }

@@ -8,8 +8,9 @@ public class SessionManager : MonoBehaviour {
 	private const int mc_startingTime = 30;
 	private const int mc_timePerLevel = 10;
 
-	[SerializeField]private Text m_timerText;
-	[SerializeField]private Text m_matchesNeededText;
+    public static int ms_matchesNeeded = 0;
+
+    [SerializeField]private Text m_timerText;
 	[SerializeField]private AudioSource m_audioSource;
 	[SerializeField]private AudioClip m_alarmClip;
 
@@ -22,8 +23,6 @@ public class SessionManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        m_matchesNeededText = GameObject.Find("RequiredScoreText").GetComponent<Text>();
-
         //calculate time
         int curDifficulty = PlayerPrefs.GetInt ("Level",0);
 		time = (int) ((curDifficulty) * (Mathf.Max(mc_timePerLevel - curDifficulty,0)) + mc_startingTime);
@@ -218,9 +217,11 @@ public class SessionManager : MonoBehaviour {
 		//Check for level unlocked
 		int curDifficulty = PlayerPrefs.GetInt ("Level",0);
 		int maxLevelUnlocked = PlayerPrefs.GetInt ("MaxLevel", 0);
-        int matchesNeeded = curDifficulty  + 5 / Mathf.Max ((5 - curDifficulty), 1) + 2;
-		m_matchesNeededText.text = "Matches Needed:" +  matchesNeeded;
-		while (time > 0) {
+        ms_matchesNeeded = curDifficulty  + 5 / Mathf.Max ((5 - curDifficulty), 1) + 2;
+        PlayerProfile.SetMatchesNeeded();
+
+
+        while (time > 0) {
 			yield return new WaitForSeconds (1.0f);
 			time--;
 			m_timerText.text = "Time Left:" + time;
@@ -254,7 +255,7 @@ public class SessionManager : MonoBehaviour {
             PlayerPrefs.SetInt("MaxLevel", curDifficulty + 1);
         }
         //if unlocked return to main menu
-        if ( PlayerProfile.GetScore ()  >= matchesNeeded) {
+        if ( PlayerProfile.GetScore ()  >= ms_matchesNeeded) {
             if (PlayerPrefs.GetInt("Level", 0) > 1)
             {
                 Fader.Instance.FadeIn().LoadLevel("MatchRejects").FadeOut();
