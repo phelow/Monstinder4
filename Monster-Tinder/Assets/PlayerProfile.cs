@@ -20,7 +20,7 @@ public class PlayerProfile : Profile {
 	[SerializeField]private BodyPartDisplay [] m_bodyPartDisplays;
 
 	[SerializeField]private static BodyPart m_choice = null;
-    private const float mc_dropTextOffset = 1.5f;
+    private const float mc_dropTextOffset = 0.5f;
 
     [SerializeField]private GameObject m_spawnIndicator;
 	private static bool skip = false;
