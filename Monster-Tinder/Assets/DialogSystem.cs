@@ -140,6 +140,10 @@ public class DialogSystem : MonoBehaviour
     [SerializeField]
     private Text m_dialogText;
     [SerializeField]
+    private UnityEngine.UI.Button m_buttonA;
+    [SerializeField]
+    private UnityEngine.UI.Button m_buttonB;
+    [SerializeField]
     private Text m_choiceA;
     [SerializeField]
     private Text m_choiceB;
@@ -171,6 +175,12 @@ public class DialogSystem : MonoBehaviour
     {
         ms_instance.m_source.PlayOneShot(ms_instance.m_clip);
         m_playerChoice = choice;
+        
+        ms_instance.m_buttonA.interactable = false;
+        ms_instance.m_buttonB.interactable = false;
+
+        ms_instance.m_choiceA.text = "";
+        ms_instance.m_choiceB.text = "";
     }
 
     public void LoadLevelOne()
@@ -1023,8 +1033,15 @@ public class DialogSystem : MonoBehaviour
 
     private IEnumerator RunScene(DialogScene scene, string startingLine = "start")
     {
-        yield return new WaitForEndOfFrame();
+        m_dialogText.text = "";
+        m_choiceA.text = "";
+        m_choiceB.text = "";
+        yield return new WaitForSeconds(2.0f);
+        m_dialogText.text = "";
         m_playerChoice = "start";
+        Fader.Instance.FadeOut(m_dialogText.gameObject);
+
+        bool first = true;
         while (m_playerChoice != "Start game")
         {
             List<string> text = null;
@@ -1035,10 +1052,12 @@ public class DialogSystem : MonoBehaviour
             {
                 Debug.LogError(m_playerChoice);
             }
-            Fader.Instance.FadeIn(m_dialogText.gameObject, .1f);
-            Fader.Instance.FadeIn(m_choiceA.gameObject, .1f);
-            Fader.Instance.FadeIn(m_choiceB.gameObject, .1f);
-            yield return new WaitForSeconds(.3f);
+
+            if (!first)
+            {
+                Fader.Instance.FadeIn(m_dialogText.gameObject);
+            }
+            yield return new WaitForSeconds(1.0f);
             m_dialogText.text = text[0];
             m_choiceA.text = text[1];
             m_choiceB.text = text[2];
@@ -1052,12 +1071,22 @@ public class DialogSystem : MonoBehaviour
                 m_buttonImageB.color = Color.white;
 
             }
+            if (!first)
+            {
+                Fader.Instance.FadeOut(m_dialogText.gameObject);
+            }
+            first = false;
 
-            Fader.Instance.FadeOut(m_dialogText.gameObject, .1f);
-            Fader.Instance.FadeOut(m_choiceA.gameObject, .1f);
-            Fader.Instance.FadeOut(m_choiceB.gameObject, .1f);
-            
             m_playerChoice = "";
+
+            if (m_choiceA.text != "")
+            {
+                m_buttonB.interactable = true;
+            }
+            if (m_choiceB.text != "")
+            {
+                m_buttonA.interactable = true;
+            }
             while (m_playerChoice.Length == 0)
             {
                 yield return new WaitForEndOfFrame();
@@ -1080,6 +1109,7 @@ public class DialogSystem : MonoBehaviour
     {
         LoadScenes();
         int currentLevel = PlayerPrefs.GetInt("Level", 0);
+        m_dialogText.text = "";
 
         if (currentLevel > m_dialogExchanges.Count)
         {

@@ -220,20 +220,16 @@ public class SessionManager : MonoBehaviour {
         ms_matchesNeeded = curDifficulty  + 5 / Mathf.Max ((5 - curDifficulty), 1) + 2;
         PlayerProfile.SetMatchesNeeded();
 
-
         while (time > 0) {
 			yield return new WaitForSeconds (1.0f);
 			time--;
 			m_timerText.text = "Time Left:" + time;
 		}
-
-
+        
 		//end the level
 		m_audioSource.PlayOneShot(m_alarmClip);
 		yield return new WaitForSeconds (3.0f);
-
-
-
+        
 		//Check for high score, save if you have one
 		int previousHighscore =  PlayerPrefs.GetInt ("HighScore",0);
 		int curScore = PlayerProfile.GetScore () * curDifficulty;
@@ -269,10 +265,7 @@ public class SessionManager : MonoBehaviour {
 		} else {
 			Fader.Instance.FadeIn().LoadLevel( "Failure" ).FadeOut();
 		}
-			//else offer option to repeat the level
 	}
-
-
 
 	// Update is called once per frame
 	void Update () {

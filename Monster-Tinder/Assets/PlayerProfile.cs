@@ -31,6 +31,8 @@ public class PlayerProfile : Profile {
 	private static int ms_incorrectChoices = 0;
     private List<GameObject> textsToDrop;
 
+    private static int ms_combo = 0;
+
     protected static PlayerProfile ms_instance;
 
     public static PlayerProfile GetPlayer()
@@ -430,12 +432,17 @@ public class PlayerProfile : Profile {
         if(score > 0)
         {
             scoreText.text = "Score: " + score;
+            scoreText.text += "\nKombo: " + ms_combo;
         }
 
     }
 
 	public static void AddMatch(){
-
+        if(ms_score > SessionManager.ms_matchesNeeded)
+        {
+            ms_combo++;
+            ms_score += ms_combo;
+        }
 
 
 		GameObject addPointsText = GameObject.Instantiate (ms_instance.m_plusPoint,ms_instance.m_spawnScoreTextHere.transform.position,ms_instance.m_spawnScoreTextHere.transform.rotation) as GameObject;
@@ -452,6 +459,7 @@ public class PlayerProfile : Profile {
     }
 
 	public static void RemoveMatch(){
+        ms_combo = 0;
 		GameObject losePointsText = GameObject.Instantiate (ms_instance.m_minusPoint,ms_instance.m_spawnScoreTextHere.transform.position,ms_instance.m_spawnScoreTextHere.transform.rotation)  as GameObject;
 		Rigidbody2D rb = losePointsText.GetComponent<Rigidbody2D> ();
 		rb.AddForce (new Vector2 (Random.Range (-10.0f, 10.0f), Random.Range (-10.0f, 10.0f)));
