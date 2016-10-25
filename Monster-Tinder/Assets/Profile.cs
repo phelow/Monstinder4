@@ -448,7 +448,6 @@ public class Profile : MonoBehaviour {
         ms_strongAgainst[BodyPart.ElementType.Ice].Add(BodyPart.ElementType.Bug);
         ms_strongAgainst[BodyPart.ElementType.Ice].Add(BodyPart.ElementType.Plant);
         ms_strongAgainst[BodyPart.ElementType.Fire].Add(BodyPart.ElementType.Ice);
-        ms_strongAgainst[BodyPart.ElementType.Plant].Add(BodyPart.ElementType.Earth);
     }
 
 	public int GetPartsOfType(BodyPart.ElementType type){

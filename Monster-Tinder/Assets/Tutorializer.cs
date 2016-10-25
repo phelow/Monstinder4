@@ -34,6 +34,8 @@ public class Tutorializer : MonoBehaviour
     [SerializeField]
     private AudioClip m_countingSound;
     [SerializeField]
+    private AudioClip m_countingSoundTwo;
+    [SerializeField]
     private AudioClip m_alarm;
     [SerializeField]
     private AudioClip m_tick;
@@ -73,19 +75,19 @@ public class Tutorializer : MonoBehaviour
         Fader.Instance.FadeOut(1.0f);
         m_text.text = "Congratulations, you've unlocked the next level.";
         yield return new WaitForSeconds(3.0f);
-        Fader.Instance.FadeIn(1.0f);
+        Fader.Instance.FadeIn(.2f);
 
         m_text.text = " You got " + MatchManager.NumMatches() + " matches.";
         yield return new WaitForSeconds(3.0f);
-        Fader.Instance.FadeIn(1.0f);
+        Fader.Instance.FadeIn(.2f);
         yield return new WaitForSeconds(2.0f);
-        Fader.Instance.FadeOut(1.0f);
+        Fader.Instance.FadeOut(.2f);
         m_text.text = "But can you find true love?";
         yield return new WaitForSeconds(3.0f);
-        Fader.Instance.FadeIn(1.0f);
+        Fader.Instance.FadeIn(.2f);
         yield return new WaitForSeconds(2.0f);
         m_text.text = "Pick the best match";
-        Fader.Instance.FadeOut(1.0f);
+        Fader.Instance.FadeOut(.2f);
         yield return new WaitForSeconds(1.0f);
         StartCoroutine(PickOne());
     }
@@ -107,7 +109,23 @@ public class Tutorializer : MonoBehaviour
     {
         float interpolateTime = .1f;
 
-        matches = MatchManager.GetMatches();
+        List<GameObject> tempMatches = MatchManager.GetMatches();
+        int m;
+        for (m =0; m < 3 && m < tempMatches.Count; m++)
+        {
+            matches.Add(tempMatches[m]);
+            tempMatches.Remove(tempMatches[m]);
+        }
+
+        for(; m < tempMatches.Count/3; m++)
+        {
+            matches.Add(tempMatches[m]);
+            tempMatches.Remove(tempMatches[m]);
+
+        }
+        
+
+
         while (matches.Count > 1)
         {
             m_text.text = "Pick the best match.\nMatches Left:" + matches.Count;
@@ -207,7 +225,7 @@ public class Tutorializer : MonoBehaviour
             for (int i = 1; i <= sameCount; i++)
             {
                 this.m_source.Stop();
-                this.m_source.PlayOneShot(this.m_countingSound);
+                this.m_source.PlayOneShot(this.m_countingSoundTwo);
                 m_hintText.text = "Matching Parts:" + i;
                 m_hintText.text += "\nClashing Parts:" + 0;
                 AddPoint(1);
@@ -250,7 +268,7 @@ public class Tutorializer : MonoBehaviour
             for (int i = 1; i <= differentCount; i++)
             {
                 this.m_source.Stop();
-                this.m_source.PlayOneShot(this.m_countingSound);
+                this.m_source.PlayOneShot(this.m_countingSoundTwo);
                 m_hintText.text = "Matching Parts:" + sameCount;
                 m_hintText.text += "\nClashing Parts:" + i;
                 AddPoint(1);
@@ -303,7 +321,7 @@ public class Tutorializer : MonoBehaviour
             for (int i = 1; i <= sameCount; i++)
             {
                 this.m_source.Stop();
-                this.m_source.PlayOneShot(this.m_countingSound);
+                this.m_source.PlayOneShot(this.m_countingSoundTwo);
                 m_hintText.text = "Matching Parts:" + i;
                 m_hintText.text += "\nClashing Parts:" + 0;
                 AddPoint(1);
@@ -349,7 +367,7 @@ public class Tutorializer : MonoBehaviour
             for (int i = 1; i <= differentCount; i++)
             {
                 this.m_source.Stop();
-                this.m_source.PlayOneShot(this.m_countingSound);
+                this.m_source.PlayOneShot(this.m_countingSoundTwo);
                 m_hintText.text = "Matching Parts:" + sameCount;
                 m_hintText.text += "\nClashing Parts:" + i;
                 AddPoint(1);

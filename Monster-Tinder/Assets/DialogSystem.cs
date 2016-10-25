@@ -1111,7 +1111,7 @@ public class DialogSystem : MonoBehaviour
         int currentLevel = PlayerPrefs.GetInt("Level", 0);
         m_dialogText.text = "";
 
-        if (currentLevel > m_dialogExchanges.Count)
+        if (currentLevel >= m_dialogExchanges.Count)
         {
             currentLevel = m_dialogExchanges.Count - 1;
         }

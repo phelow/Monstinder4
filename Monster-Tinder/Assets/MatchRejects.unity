@@ -977,9 +977,10 @@ MonoBehaviour:
   m_timerText: {fileID: 694017345}
   m_hintText: {fileID: 522874505}
   m_source: {fileID: 1606917225}
-  m_countingSound: {fileID: 8300000, guid: 2d4817a149406465e809fdc3d1e2d0f2, type: 3}
+  m_countingSound: {fileID: 8300000, guid: 91ec69352ec11fd4cafed1f24a2d6eed, type: 3}
+  m_countingSoundTwo: {fileID: 8300000, guid: d1873c93d8b73444eb26e84851d1a347, type: 3}
   m_alarm: {fileID: 8300000, guid: 42f2ac6352bd8451580ad2ce61ab1a02, type: 3}
-  m_tick: {fileID: 8300000, guid: 8cce23a2c61014cb78213530bd3d2f3f, type: 3}
+  m_tick: {fileID: 8300000, guid: 91ec69352ec11fd4cafed1f24a2d6eed, type: 3}
   m_match: {fileID: 8300000, guid: 2d4817a149406465e809fdc3d1e2d0f2, type: 3}
   m_fail: {fileID: 8300000, guid: 4035c03299fcc4260984129b22c0bf43, type: 3}
   m_completeSound: {fileID: 8300000, guid: ab82d82c5c5cf46399e4ea086a40c92b, type: 3}

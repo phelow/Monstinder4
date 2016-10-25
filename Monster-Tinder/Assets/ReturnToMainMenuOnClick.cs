@@ -9,11 +9,11 @@ public class ReturnToMainMenuOnClick : MonoBehaviour {
 
 	void Start(){
 
-		Fader.Instance.FadeOut (3.0f);
+		Fader.Instance.FadeOut (.3f);
 	}
 
 	public void r(){
         m_button.interactable = false;
-		Fader.Instance.FadeIn(.1f).LoadLevel( "Main Menu" ).FadeOut();
+		Fader.Instance.FadeIn(.1f).LoadLevel( "Main Menu" ).FadeOut(.1f);
 	}
 }
