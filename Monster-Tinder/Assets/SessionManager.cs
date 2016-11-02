@@ -235,7 +235,7 @@ public class SessionManager : MonoBehaviour {
         {
             lerpAudio -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
-            this.m_gameplayMusic.volume = Mathf.Lerp(1.0f, 0.0f, lerpAudio);
+            this.m_gameplayMusic.volume = Mathf.Lerp(0.0f,1.0f, lerpAudio);
         }
         
 		//end the level

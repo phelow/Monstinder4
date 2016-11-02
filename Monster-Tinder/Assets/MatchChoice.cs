@@ -17,20 +17,25 @@ public class MatchChoice : MonoBehaviour {
         m_button.enabled = true;
     }
 
-	// Use this for initialization
-	void OnLevelWasLoaded () {
+    // Use this for initialization
+    void OnLevelWasLoaded() {
         ms_playerProfile = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerProfile>();
-	}
-	
+    }
+
     public Profile GetMonsterProfile()
     {
         return m_monsterProfile;
     }
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // Update is called once per frame
+    void Update() {
+
+    }
+
+    public SpriteRenderer[] GetAllSprites()
+    {
+        return m_monsterProfile.GetComponentsInChildren<SpriteRenderer>();
+    }
 
     public UnityEngine.UI.Button GetButton()
     {

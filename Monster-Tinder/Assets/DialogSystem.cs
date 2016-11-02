@@ -1036,7 +1036,6 @@ public class DialogSystem : MonoBehaviour
         m_dialogText.text = "";
         m_choiceA.text = "";
         m_choiceB.text = "";
-        yield return new WaitForSeconds(2.0f);
         m_dialogText.text = "";
         m_playerChoice = "start";
         Fader.Instance.FadeOut(m_dialogText.gameObject);

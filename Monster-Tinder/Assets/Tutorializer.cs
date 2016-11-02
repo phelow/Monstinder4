@@ -72,22 +72,16 @@ public class Tutorializer : MonoBehaviour
     {
 
         
-        Fader.Instance.FadeOut(m_text.gameObject,1.0f);
         m_text.text = "Congratulations, you've unlocked the next level.";
         yield return new WaitForSeconds(3.0f);
-        Fader.Instance.FadeIn(m_text.gameObject, .2f);
 
         m_text.text = " You got " + MatchManager.NumMatches() + " matches.";
         yield return new WaitForSeconds(3.0f);
-        Fader.Instance.FadeIn(m_text.gameObject, .2f);
         yield return new WaitForSeconds(2.0f);
-        Fader.Instance.FadeOut(m_text.gameObject, .2f);
         m_text.text = "But can you find true love?";
         yield return new WaitForSeconds(3.0f);
-        Fader.Instance.FadeIn(m_text.gameObject, .2f);
         yield return new WaitForSeconds(2.0f);
         m_text.text = "Pick the best match";
-        Fader.Instance.FadeOut(m_text.gameObject, .2f);
         yield return new WaitForSeconds(1.0f);
         StartCoroutine(PickOne());
     }
@@ -211,11 +205,11 @@ public class Tutorializer : MonoBehaviour
             {
                 sr.color = Color.grey;
             }
-            foreach (SpriteRenderer sr in ms_playerChoice.GetComponentsInChildren<SpriteRenderer>())
+            foreach (SpriteRenderer sr in ms_playerChoice.GetAllSprites())
             {
                 sr.color = Color.grey;
             }
-            foreach (SpriteRenderer sr in otherChoice.GetComponentsInChildren<SpriteRenderer>())
+            foreach (SpriteRenderer sr in otherChoice.GetAllSprites())
             {
                 sr.color = Color.grey;
             }
@@ -308,14 +302,6 @@ public class Tutorializer : MonoBehaviour
             {
                 sr.color = Color.grey;
             }
-            foreach (SpriteRenderer sr in ms_playerChoice.GetComponentsInChildren<SpriteRenderer>())
-            {
-                sr.color = Color.grey;
-            }
-            foreach (SpriteRenderer sr in otherChoice.GetComponentsInChildren<SpriteRenderer>())
-            {
-                sr.color = Color.grey;
-            }
 
             //compare the player and the choice made
             for (int i = 1; i <= sameCount; i++)
@@ -352,14 +338,6 @@ public class Tutorializer : MonoBehaviour
 
             spritePairs = Profile.GetClashingPairs(PlayerProfile.GetPlayer(), otherChoice.GetMonster().GetComponent<Profile>());
             foreach (SpriteRenderer sr in PlayerProfile.GetPlayer().GetComponentsInChildren<SpriteRenderer>())
-            {
-                sr.color = Color.grey;
-            }
-            foreach (SpriteRenderer sr in ms_playerChoice.GetComponentsInChildren<SpriteRenderer>())
-            {
-                sr.color = Color.grey;
-            }
-            foreach (SpriteRenderer sr in otherChoice.GetComponentsInChildren<SpriteRenderer>())
             {
                 sr.color = Color.grey;
             }

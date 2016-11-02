@@ -344,64 +344,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 123363010}
---- !u!1001 &296445825
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400002, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-      propertyPath: color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400002, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-      propertyPath: color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400002, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-      propertyPath: color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400002, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-      propertyPath: defaultState
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &340274865
 Prefab:
   m_ObjectHideFlags: 0
@@ -439,7 +381,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013543418076, guid: 6d09cbdf1e55f3c49a411e3fc0b0d9e4, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d09cbdf1e55f3c49a411e3fc0b0d9e4, type: 2}
@@ -877,7 +819,7 @@ Transform:
   m_Children:
   - {fileID: 631269710}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &796705615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,7 +1348,7 @@ Transform:
   m_Children:
   - {fileID: 651573257}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &1355161285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,7 +1515,7 @@ Transform:
   m_Children:
   - {fileID: 1355161286}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1552128738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,21 +1762,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: -10
   m_TargetDisplay: 0
---- !u!1 &1830746825 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: abc912353bc3e9646aa61cac9469c04d, type: 2}
-  m_PrefabInternal: {fileID: 296445825}
---- !u!114 &1830746826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1830746825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19a2e9256a9f4e444880d7f0f95957fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1893307866
 GameObject:
   m_ObjectHideFlags: 0
