@@ -12,10 +12,6 @@ public class DislikeButton : Button {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            ButtonPress();
-        }
 	}
 
 	public void ButtonPress(){

@@ -36,6 +36,8 @@ class ImageScreenFader : Fader
         if (color != last_fadeColor)
             Init();
 
+        AudioListener.volume = GetLinearBalance();
+
         color.a = GetLinearBalance();
         base.Update();
     }

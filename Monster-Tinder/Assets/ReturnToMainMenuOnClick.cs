@@ -14,6 +14,6 @@ public class ReturnToMainMenuOnClick : MonoBehaviour {
 
 	public void r(){
         m_button.interactable = false;
-		Fader.Instance.FadeIn(.1f).LoadLevel( "Main Menu" ).FadeOut(.1f);
+		Fader.Instance.FadeIn(.3f).LoadLevel( "Main Menu" ).FadeOut(.1f);
 	}
 }

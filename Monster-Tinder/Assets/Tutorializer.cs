@@ -72,22 +72,22 @@ public class Tutorializer : MonoBehaviour
     {
 
         
-        Fader.Instance.FadeOut(1.0f);
+        Fader.Instance.FadeOut(m_text.gameObject,1.0f);
         m_text.text = "Congratulations, you've unlocked the next level.";
         yield return new WaitForSeconds(3.0f);
-        Fader.Instance.FadeIn(.2f);
+        Fader.Instance.FadeIn(m_text.gameObject, .2f);
 
         m_text.text = " You got " + MatchManager.NumMatches() + " matches.";
         yield return new WaitForSeconds(3.0f);
-        Fader.Instance.FadeIn(.2f);
+        Fader.Instance.FadeIn(m_text.gameObject, .2f);
         yield return new WaitForSeconds(2.0f);
-        Fader.Instance.FadeOut(.2f);
+        Fader.Instance.FadeOut(m_text.gameObject, .2f);
         m_text.text = "But can you find true love?";
         yield return new WaitForSeconds(3.0f);
-        Fader.Instance.FadeIn(.2f);
+        Fader.Instance.FadeIn(m_text.gameObject, .2f);
         yield return new WaitForSeconds(2.0f);
         m_text.text = "Pick the best match";
-        Fader.Instance.FadeOut(.2f);
+        Fader.Instance.FadeOut(m_text.gameObject, .2f);
         yield return new WaitForSeconds(1.0f);
         StartCoroutine(PickOne());
     }

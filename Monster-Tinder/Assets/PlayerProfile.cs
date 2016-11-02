@@ -374,6 +374,8 @@ public class PlayerProfile : Profile {
 		m_body.transform.parent = this.transform;
 
 		//TODO: go to the next scene
+
+        
 		Fader.Instance.FadeIn().LoadLevel( "PrototypeScene" ).FadeIn(3.0f).FadeOut(3.0f);
 	}
 

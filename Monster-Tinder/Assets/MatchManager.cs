@@ -116,11 +116,11 @@ public class MatchManager : MonoBehaviour
 
         if (isMatch)
         {
-            Profile.HighLightMatchingParts(PlayerProfile.GetPlayer(), MatchProfile.ms_currentMatch);
+            Profile.HighlightMatchingPartsOneAtATime(PlayerProfile.GetPlayer(), MatchProfile.ms_currentMatch);
 
         }
         else {
-            Profile.HighLightConflicts(PlayerProfile.GetPlayer(), MatchProfile.ms_currentMatch);
+            Profile.HighlightClashingPartsOneAtATime(PlayerProfile.GetPlayer(), MatchProfile.ms_currentMatch);
         }
          new WaitForSeconds(3.0f);
         PlayerProfile.ClearMatchText();

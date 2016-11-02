@@ -19,6 +19,9 @@ public class SessionManager : MonoBehaviour {
 	[SerializeField]private GameObject [] m_endGameDestruction;
 
     [SerializeField]
+    private AudioSource m_gameplayMusic;
+
+    [SerializeField]
     private int time;
 
 	// Use this for initialization
@@ -225,6 +228,15 @@ public class SessionManager : MonoBehaviour {
 			time--;
 			m_timerText.text = "Time Left:" + time;
 		}
+
+        float lerpAudio = 1.0f;
+
+        while(lerpAudio > 0.0f)
+        {
+            lerpAudio -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+            this.m_gameplayMusic.volume = Mathf.Lerp(1.0f, 0.0f, lerpAudio);
+        }
         
 		//end the level
 		m_audioSource.PlayOneShot(m_alarmClip);

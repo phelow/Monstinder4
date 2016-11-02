@@ -67,6 +67,7 @@ public class MatchChoice : MonoBehaviour {
 
     public void SetMonster(GameObject choice)
     {
+        choice.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - .1f);
         m_monsterReference = choice;
 
         foreach(BoxCollider2D collider in m_monsterReference.GetComponentsInChildren<BoxCollider2D>())
@@ -80,7 +81,6 @@ public class MatchChoice : MonoBehaviour {
 
         m_monsterProfile = m_monsterReference.GetComponent<Profile>();
         m_monster = choice;
-        choice.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z - .1f);
 
         m_monster.GetComponent<MatchProfile>().HidePolaroid();
     }

@@ -15,11 +15,7 @@ public class LikeButton : Button {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            ButtonPress();
-        }
+        
     }
 
 	public void ButtonPress(){

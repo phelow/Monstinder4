@@ -33,6 +33,7 @@ public class DefaultScreenFader : Fader
         if (color != last_fadeColor)
             Init();
 
+        AudioListener.volume = 1.0f - GetLinearBalance();
         color.a = GetLinearBalance();
         base.Update();
     }
