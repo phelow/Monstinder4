@@ -60,8 +60,18 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip.Reduced">
+      <HintPath>Assets\GAF\Plugins\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="GAF">
+      <HintPath>Assets\GAF\Plugins\GAF.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniJson">
+      <HintPath>Assets\GAF\Plugins\MiniJson.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AdvanceOnTimer.cs" />
     <Compile Include="Assets\BodyPart.cs" />
     <Compile Include="Assets\BodyPartDisplay.cs" />
     <Compile Include="Assets\BodyPartSlot.cs" />
@@ -71,6 +81,19 @@
     <Compile Include="Assets\DialogSystem.cs" />
     <Compile Include="Assets\DifficultySystem.cs" />
     <Compile Include="Assets\DislikeButton.cs" />
+    <Compile Include="Assets\GAF\Examples\Scripts\GAFSceneController.cs" />
+    <Compile Include="Assets\GAF\Scripts\Asset\GAFAnimationAsset.cs" />
+    <Compile Include="Assets\GAF\Scripts\Asset\GAFTexturesResource.cs" />
+    <Compile Include="Assets\GAF\Scripts\Core\GAFBakedMovieClip.cs" />
+    <Compile Include="Assets\GAF\Scripts\Core\GAFMovieClip.cs" />
+    <Compile Include="Assets\GAF\Scripts\Core\Interfaces\GAFMovieClipInternal.cs" />
+    <Compile Include="Assets\GAF\Scripts\Objects\GAFBakedObject.cs" />
+    <Compile Include="Assets\GAF\Scripts\Objects\GAFBakedObjectController.cs" />
+    <Compile Include="Assets\GAF\Scripts\Objects\GAFBakedObjectsManager.cs" />
+    <Compile Include="Assets\GAF\Scripts\Objects\GAFObject.cs" />
+    <Compile Include="Assets\GAF\Scripts\Objects\GAFObjectsManager.cs" />
+    <Compile Include="Assets\GAF\Scripts\Objects\Interfaces\GAFBakedObjectsManagerInternal.cs" />
+    <Compile Include="Assets\GAF\Scripts\Objects\Interfaces\GAFObjectsManagerInternal.cs" />
     <Compile Include="Assets\GenerateFailureText.cs" />
     <Compile Include="Assets\GenerateText.cs" />
     <Compile Include="Assets\HighScore.cs" />
@@ -109,6 +132,17 @@
     <Compile Include="Assets\Tutorializer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\GAF\Docs\Readme.txt" />
+    <None Include="Assets\GAF\Docs\What&apos;s new.txt" />
+    <None Include="Assets\GAF\Plugins\GAF.XML" />
+    <None Include="Assets\GAF\Resources\Shaders\GAFBlur.shader" />
+    <None Include="Assets\GAF\Resources\Shaders\GAFFilteredObject.shader" />
+    <None Include="Assets\GAF\Resources\Shaders\GAFFilters.cginc" />
+    <None Include="Assets\GAF\Resources\Shaders\GAFGlow.shader" />
+    <None Include="Assets\GAF\Resources\Shaders\GAFMask.shader" />
+    <None Include="Assets\GAF\Resources\Shaders\GAFMaskReset.shader" />
+    <None Include="Assets\GAF\Resources\Shaders\GAFObjectsGroup.shader" />
+    <None Include="Assets\GAF\Resources\Shaders\GAFShaderBase.cginc" />
     <None Include="Assets\Screen Fader Pack\ReadMe (eng).txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
